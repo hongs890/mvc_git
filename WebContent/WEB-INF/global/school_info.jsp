@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/member.css"/>
+<link rel="stylesheet" href="${css}/global.css"/>	
 </head>
 <body>
 <div class="box">
