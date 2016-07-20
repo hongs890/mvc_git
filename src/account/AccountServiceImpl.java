@@ -1,7 +1,7 @@
 /**
  * 
  */
-package bank;
+package account;
 
 import java.util.HashMap;
 import java.util.List;

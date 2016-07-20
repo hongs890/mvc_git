@@ -9,18 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MemberController
- */
-@WebServlet("/member/main.do")
+@WebServlet({"/member/main.do","/member/regist.do","/member/find_by_id.do","/member/update.do","/member/delete.do"
+	,"/member/login.do","/member/logout.do","/member/list.do","/member/find_by.do","/member/count.do"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String servletPath = request.getServletPath();
-		String pkg = servletPath.split("/")[1];
-		String path = servletPath.split("/")[2];
-		String view = path.substring(0, path.indexOf("."));
+		String view = request.getServletPath().split("/")[2].split(".do")[0];
+		String pkg = request.getServletPath().split("/")[1].split(".do")[0];
 		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/"+pkg+"/"+view+".jsp");
 		dis.forward(request, response);
 	}
@@ -29,5 +24,4 @@ public class MemberController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

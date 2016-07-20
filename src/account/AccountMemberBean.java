@@ -1,4 +1,4 @@
-package bank;
+package account;
 
 /**
  * @date  : 2016. 7. 7.

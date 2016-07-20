@@ -43,7 +43,9 @@ div.box{border: 5px solid powderblue; margin: 0 auto; width: 600px; text-align: 
 }
 
 #nav li a:hover:not(.active) {
-    background-color: green;
+    background-color: white;
+	color: black;
+	font-weight: bold;
 }
 
 #active {

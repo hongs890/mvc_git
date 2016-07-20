@@ -1,4 +1,4 @@
-package bank;
+package account;
 
 import java.io.IOException;
 
@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AccountController
  */
-@WebServlet("/bank/main.do")
+
+@WebServlet({"/bank/main.do","/bank/regist.do","/bank/deposit.do","/bank/withdraw.do","/bank/update.do"
+	,"/bank/delete.do","/bank/list.do","/bank/search.do","/bank/count.do"})
 public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
