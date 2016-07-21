@@ -38,7 +38,9 @@ public class MemberController extends HttpServlet {
 		String name = service.login(this.init(request));
 		if (!name.equals("")) {
 			this.view = "result/"+view;
+			System.out.println("view : "+view);
 		}
+		this.view = "result/"+view;
 		try {
 			this.dispatch(request, response);
 		} catch (Exception e) {
@@ -55,6 +57,7 @@ public class MemberController extends HttpServlet {
 		String pw = request.getParameter("pw");
 		MemberBean m = new MemberBean();
 		System.out.println("ID : "+id+" PW : "+pw);
+		
 		m.setId(id);
 		m.setPw(pw);
 		return m;

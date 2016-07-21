@@ -15,7 +15,7 @@
 		if(id == ""|| pw == ""){
 			%>
 			<h2>로그인 실패!!</h2><br/>
-			<a href="${context }/member/service/login.jsp">다시 로그인 하시겠습니까?</a>
+			<a href="${context }/member/login.do">다시 로그인 하시겠습니까?</a>
 			<%
 		}else{
 			member.setId(id);
@@ -24,14 +24,17 @@
 			if(name == ""){
 				%>
 				<h2>로그인 실패!!</h2><br/>
-				<a href="${context }/member/service/login.jsp">다시 로그인 하시겠습니까?</a>
+				<a href="${context }/member/login.do">다시 로그인 하시겠습니까?</a>
 				<%
 				
 			}else{
-				response.sendRedirect(null);
+				response.sendRedirect("../../mvc2/global/main.do");
 			}
 		}
 	%>
 </div>
 <jsp:include page= "../../global/footer.jsp" />
 <jsp:include page= "../../global/end.jsp" />
+
+ 
+ 
