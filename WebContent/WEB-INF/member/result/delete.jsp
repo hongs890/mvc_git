@@ -14,10 +14,10 @@
 			bean.setId(service.getSession().getId());
 			bean.setPw(service.getSession().getPw());
 			service.delete(bean);
-			response.sendRedirect(null);
+			response.sendRedirect("../../mvc2/global/main.do");
 		}else{
 			%>잘못된 정보를 입력하셨습니다.<br/>
-			<a href="${context }/member/main.jsp">메인화면으로 돌아가기</a><%
+			<a href="${context }/member/main.do">메인화면으로 돌아가기</a><%
 		}
 		%>
 	</div>

@@ -14,7 +14,6 @@ span.meta{width: 200px; background-color:yellow; float: left}
 
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		MemberBean member = new MemberBean();
-		
 		String name = request.getParameter("name");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -30,9 +29,8 @@ span.meta{width: 200px; background-color:yellow; float: left}
 		if(name == ""){
 			%>아이디가 이미 사용중입니다 <br/><br/><br/>
 			
-			<a href="${context }/member/service/regist.jsp">다른 아이디로 가입하시겠습니까?</a><%
+			<a href="${context }/member/regist.do">다른 아이디로 가입하시겠습니까?</a><%
 		}else{
-			
 			%>
 			<span class="meta">이름 </span><%=name %><br/>
 			<span class="meta">ID</span><%=id%><br/>
@@ -55,8 +53,8 @@ span.meta{width: 200px; background-color:yellow; float: left}
 		}
 		%>	<br/>	
 
-	<a href="${context }/member/main.jsp"><img src="${img }/member.png" alt="member" style="width:30px" /></a>
-	<a href="${context }/index.jsp"><img src="${img }/home.png" alt="home" style="width:30px" /></a>
+	<a href="${context }/member/main.do"><img src="${img }/member.png" alt="member" style="width:30px" /></a>
+	<a href="${context }/index.do"><img src="${img }/home.png" alt="home" style="width:30px" /></a>
 </div>
 <jsp:include page= "../../global/footer.jsp" />
 <jsp:include page= "../../global/end.jsp" />

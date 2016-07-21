@@ -16,7 +16,7 @@
 		}else{
 			%>
 			<h1>정말 탈퇴하시겠습니까?</h1><br/>
-			<form action="${context }/member/result/delete.jsp" method="post">
+			<form action="${context}/member/delete.do" method="post">
 			<input type="hidden" name="id" value="<%=service.getSession().getId()%>">
 			비밀번호를 입력해주세요<input type="text" name="pw"><br/>
 			<input type="submit" value="탈퇴">

@@ -33,5 +33,5 @@ update member set name = '최경환' where name='홍길동3';
 alter table member add email varchar2(30);
 alter table member add profile_img varchar2(100);
 -- DELETE
-delete from member where id = 'coffe';
+delete from member where id = '이개똥';
 drop table member;

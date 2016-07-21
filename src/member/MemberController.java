@@ -34,13 +34,23 @@ public class MemberController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("POST방식으로 접근함");
+		this.init();
 		MemberService service = MemberServiceImpl.getInstanceImpl();
-		String name = service.login(this.init(request));
-		if (!name.equals("")) {
-			this.view = "result/"+view;
-			System.out.println("view : "+view);
-		}
-		this.view = "result/"+view;
+		String name ="";
+		switch (this.view) {
+		case "login":
+			name = service.login(this.init(request));
+			request.setAttribute("result", name);
+			if (!name.equals("")) {
+				this.directory = "global";
+				this.view = "main";
+			}
+			break;
+		case "regist":
+			service.regist(this.init(request));
+			this.view = "login";
+			break;
+		}	
 		try {
 			this.dispatch(request, response);
 		} catch (Exception e) {
@@ -55,12 +65,19 @@ public class MemberController extends HttpServlet {
 		this.view = arr[2].substring(0, arr[2].indexOf("."));
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		MemberBean m = new MemberBean();
+		String name = request.getParameter("name");
+		String ssn = request.getParameter("ssn");
+		String email = request.getParameter("email");
+		MemberBean member = new MemberBean();
 		System.out.println("ID : "+id+" PW : "+pw);
-		
-		m.setId(id);
-		m.setPw(pw);
-		return m;
+		member.setId(id);
+		member.setPw(pw);
+		member.setName(name);
+		member.setSsn(ssn);
+		member.setEmail(email);
+		member.setRegDate();
+	
+		return member;
 	}
 	public void dispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/"+this.directory+"/"+this.view+".jsp");

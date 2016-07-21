@@ -5,7 +5,7 @@
 span.meta{width: 500px; background-color:yellow; float: center}
 </style>
 <div style="text-align: center">
-		<form action="${context }/member/result/regist.jsp" method="post">
+		<form action="${context }/member/regist.do" method="post">
 		<span class="meta">이름 </span> <input type="text" name="name"/><br/>
 		<span class="meta">ID</span><input type="text" name="id"/><br/>
 		<span class="meta">비밀번호</span><input type="text" name="pw"/><br/>
