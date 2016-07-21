@@ -18,8 +18,10 @@ public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String view = request.getServletPath().split("/")[2].split(".do")[0];
-		String pkg = request.getServletPath().split("/")[1].split(".do")[0];
+		String sPath = request.getServletPath();
+		String[] arr = sPath.split("/");
+		String pkg = arr[1];
+		String view = arr[2].substring(0, arr[2].indexOf("."));
 		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/"+pkg+"/"+view+".jsp");
 		dis.forward(request, response);
 	}
