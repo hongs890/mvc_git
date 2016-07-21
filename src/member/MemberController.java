@@ -16,12 +16,18 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String view = request.getServletPath().split("/")[2].split(".do")[0];
 		String pkg = request.getServletPath().split("/")[1].split(".do")[0];
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		System.out.println("ID : "+id+" PW : "+pw);
 		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/"+pkg+"/"+view+".jsp");
 		dis.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+	}
+	
+	public void init() throws SecurityException{
+		
 	}
 }
