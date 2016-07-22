@@ -61,11 +61,16 @@ public class MemberController extends HttpServlet {
 			service.update(member);
 			break;
 		case "delete":
-			member.setId(service.getSession().getId());
-			member.setPw(request.getParameter("pw"));
-			service.delete(member);
-			Separator.command.setDirectory(request.getParameter("directory"));
-			Separator.command.setView();
+			if (request.getParameter("pw").equals(service.getSession().getPw())) {
+				member.setId(service.getSession().getId());
+				member.setPw(request.getParameter("pw"));
+				service.delete(member);
+				Separator.command.setDirectory(request.getParameter("directory"));
+				Separator.command.setView();
+			} else {
+				Separator.command.setPage("delete");
+				Separator.command.setView();
+			}
 			break;
 		case "logout":
 			member.setId(service.getSession().getId());
