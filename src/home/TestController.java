@@ -1,30 +1,22 @@
-package account;
+package home;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import global.DispatcherServlet;
-import global.Separator;
-
 /**
- * Servlet implementation class AccountController
+ * Servlet implementation class TestController
  */
-
-@WebServlet("/account.do")
-public class AccountController extends HttpServlet {
+@WebServlet("/TestController")
+public class TestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("=== Account Controller===");
-		Separator.init(request, response);
-		DispatcherServlet.send(request, response, Separator.command);
-	}
 
+
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
 
 }

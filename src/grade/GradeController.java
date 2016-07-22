@@ -9,26 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import global.DispatcherServlet;
+import global.Separator;
+
 /**
  * Servlet implementation class GradeController
  */
-@WebServlet({"/grade/main.do","/grade/regist.do","/grade/update.do","/grade/delete.do","/grade/list.do"
-	,"/grade/count.do","/grade/search.do"})
+@WebServlet("/grade.do")
 public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sPath = request.getServletPath();
-		String[] arr = sPath.split("/");
-		String pkg = arr[1];
-		String view = arr[2].substring(0, arr[2].indexOf("."));
-		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/"+pkg+"/"+view+".jsp");
-		dis.forward(request, response);
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("=== Grade Controller===");
+		Separator.init(request, response);
+		DispatcherServlet.send(request, response, Separator.command);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
