@@ -52,6 +52,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void update(MemberBean mem) {
+		mem.setId(session.getId());
 		dao.update(mem);
 		session = dao.findById(mem.getId());
 	}
@@ -67,9 +68,8 @@ public class MemberServiceImpl implements MemberService {
 		return dao.count();
 	}
 	@Override
-	public MemberBean findById(String id) {
-	
-		return dao.findById(id);
+	public MemberBean findById(MemberBean mem) {
+		return dao.findById(mem.getId());
 	}
 	public List<?> list() {
 		return dao.list();

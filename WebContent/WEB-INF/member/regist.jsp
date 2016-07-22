@@ -2,10 +2,10 @@
 <jsp:include page= "../global/top.jsp" />
 <jsp:include page= "../global/header.jsp" />
 <style>
-span.meta{width: 500px; background-color:yellow; float: center}
+span.meta{width: 200px; background-color:yellow; float: center}
 </style>
 <div style="text-align: center">
-		<form action="${context }/member/regist.do" method="post">
+	<form action="${context }/member.do" method="post">
 		<span class="meta">이름 </span> <input type="text" name="name"/><br/>
 		<span class="meta">ID</span><input type="text" name="id"/><br/>
 		<span class="meta">비밀번호</span><input type="text" name="pw"/><br/>
@@ -23,10 +23,12 @@ span.meta{width: 500px; background-color:yellow; float: center}
 		<input type="checkbox" name="subject" value="python"/> 파이썬
 		<input type="checkbox" name="subject" value="delphi"/> 델파이
 		<input type="checkbox" name="subject" value="html"/> HTML<br/>
+		<input type="hidden" name="action" value="regist">
+		<input type="hidden" name="directory" value="global">
 		<input type="submit" value="회원가입" />
 		<input type="reset" value="취소" />
 	</form>	
-	<a href="${context }/index.jsp"><img src="${img }/home.png" alt="home" style="width:30px" /></a>
+	<a href="${context }/home.do"><img src="${img }/home.png" alt="home" style="width:30px" /></a>
 </div>
 <jsp:include page= "../global/footer.jsp" />
 <jsp:include page= "../global/end.jsp" />

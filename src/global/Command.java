@@ -48,5 +48,4 @@ public class Command implements Orderable{
 	public void setView() {
 		this.view = "/WEB-INF/"+this.directory+"/"+this.page+".jsp";
 	}
-
 }
