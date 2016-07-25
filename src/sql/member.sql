@@ -6,6 +6,7 @@ create table member(
 	reg_date varchar2(20),
 	ssn varchar2(10),	
 	email varchar2(30),
+	phone varchar2(15),
 	profile_img varchar2(100)
 );
 -- CREATE
@@ -30,8 +31,9 @@ update member set pw = '1' where id = 'hong';
 where id = 'you';
 update member set profile_img = id || '.jpg' where profile_img is NULL;
 update member set name = '최경환' where name='홍길동3';
-alter table member add email varchar2(30);
+update member set phone ='010-7143-0222';
+alter table member modify phone varchar2(15);
 alter table member add profile_img varchar2(100);
 -- DELETE
-delete from member where id = 'hong3';
+delete from member where id = 'park';
 drop table member;

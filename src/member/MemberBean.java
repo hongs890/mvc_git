@@ -15,18 +15,19 @@ import java.util.Date;
  */
 public class MemberBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String id, pw, name, regDate, gender, ssn, profileImg, email;
+	private String id, pw, name, regDate, gender, ssn, profileImg, email, phone;
 	private int birth;
 	
 	public MemberBean() {}
 	
-	public MemberBean(String id,String pw, String name, String ssn, String email, String profileImg) {
+	public MemberBean(String id,String pw, String name, String ssn, String email, String profileImg, String phone) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.ssn = ssn;
 		this.profileImg = profileImg;
 		this.email = email;
+		this.phone = phone;
 		String now = regDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 		String[] ssnArr = ssn.split("-");
 		String[] nowArr = now.split("-");
@@ -126,10 +127,13 @@ public class MemberBean implements Serializable{
 		return this.email;
 	}
 
-	
+	public String getPhone() {
+		return phone;
+	}
 
-
-
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	@Override
 	public String toString() {

@@ -41,6 +41,7 @@ public class MemberController extends HttpServlet {
 			member.setName(request.getParameter("name"));
 			member.setSsn(request.getParameter("ssn"));
 			member.setEmail(request.getParameter("email"));
+			member.setPhone(request.getParameter("phone"));
 			member.setRegDate();
 			String name2 = service.regist(member);
 			if (name2 == "") {
@@ -53,6 +54,7 @@ public class MemberController extends HttpServlet {
 			}
 			break;
 		case "find_by_id":
+			request.setAttribute("ssn", service.getSession().getSsn().substring(0, 6));
 			Separator.command.setView();
 			break;
 		case "update":

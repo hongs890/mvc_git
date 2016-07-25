@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td class="font_bold bg_color_yellow">생년월일</td>
-			<td colspan="2">${member.ssn}</td>
+			<td colspan="2">${ssn}</td>
 		</tr>
 		<tr>
 			<td class="font_bold bg_color_yellow">등록일</td>

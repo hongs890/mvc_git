@@ -43,8 +43,8 @@ public class MemberDAO {
 
 	public int insert(MemberBean mem) {
 		int result = 0;	
-		String sql = "insert into member(id,pw,name,reg_date,ssn,email) "
-				+ "values(?,?,?,?,?,?)";
+		String sql = "insert into member(id,pw,name,reg_date,ssn,email,phone) "
+				+ "values(?,?,?,?,?,?,?)";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem.getId());
@@ -53,6 +53,7 @@ public class MemberDAO {
 			pstmt.setString(4, mem.getRegDate());
 			pstmt.setString(5, mem.getSsn());
 			pstmt.setString(6, mem.getEmail());
+			pstmt.setString(7, mem.getPhone());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			
@@ -96,7 +97,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberBean t = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
-						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
+						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"), rs.getString("phone"));
 				t.setRegDate(rs.getString("REG_DATE"));
 				list.add(t);
 			}
@@ -115,7 +116,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				temp = new MemberBean(rs.getString("ID"), rs.getString("PW"), rs.getString("NAME"),
-						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
+						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"), rs.getString("phone"));
 				temp.setRegDate(rs.getString("REG_DATE"));
 			}
 		} catch (Exception e) {
@@ -134,7 +135,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberBean mem = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
-						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
+						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"), rs.getString("phone"));
 				mem.setRegDate(rs.getString("REG_DATE"));
 				list2.add(mem);
 			}

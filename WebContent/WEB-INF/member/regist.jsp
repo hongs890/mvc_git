@@ -11,6 +11,7 @@ span.meta{width: 200px; background-color:yellow; float: center}
 		<span class="meta">비밀번호</span><input type="text" name="pw"/><br/>
 		<span class="meta">SSN</span><input type="text" name="ssn"><br/>
 		<span class="meta">E-Mail</span><input type="text" name="email"><br/>
+		<span class="meta">Phone Number</span><input type="text" name="phone"><br/>
 		<span class="meta">전공</span> 
 		<input type="radio" name="major" value="computer" checked/> 컴공학부
 		<input type="radio" name="major" value="mgmt"/> 경영학부
