@@ -4,15 +4,23 @@ import java.io.Serializable;
 
 public class GradeBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String id, grade,seq,examDate,type,score;
+	private String id, grade,seq,examDate,subject,score, major;
 	private int java, sql, html, javascript;
 	
-	public String getType() {
-		return type;
+	public String getMajor() {
+		return major;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public String getScore() {

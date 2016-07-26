@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import global.DispatcherServlet;
+import global.ParamMap;
 import global.Separator;
-import sun.print.resources.serviceui_pt_BR;
+import subject.SubjectBean;
+import subject.SubjectService;
+import subject.SubjectServiceImpl;
 
 @WebServlet("/member.do")	
 public class MemberController extends HttpServlet {
@@ -22,16 +25,19 @@ public class MemberController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Separator.init(request,response);
 		MemberService service = MemberServiceImpl.getInstanceImpl();
+		SubjectService subjService = SubjectServiceImpl.getInstance();
 		MemberBean member = new MemberBean();
+		SubjectBean subject = new SubjectBean();
 		switch (Separator.command.getAction()) {
 		case "login" : 
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			member = service.login(member);
+			service.login(member);
 			if (member.getId().equals("fail")) {
 				Separator.command.setPage("login");
 				Separator.command.setView();
 			} else {
+				request.setAttribute("user", member);
 				session.setAttribute("user", member);
 				Separator.command.setDirectory(request.getParameter("directory"));
 			}
@@ -44,12 +50,18 @@ public class MemberController extends HttpServlet {
 			member.setEmail(request.getParameter("email"));
 			member.setPhone(request.getParameter("phone"));
 			member.setRegDate();
+			System.out.println("전공 : "+request.getParameter("major"));
+			System.out.println("수강과목 : " + ParamMap.getValues(request, "subject").toString());
 			String name2 = service.regist(member);
 			if (name2 == "") {
 				Separator.command.setPage("regist");
 				Separator.command.setView();
 			} else {
 				Separator.command.setPage("login");
+				subject.setId(request.getParameter("id"));
+				subject.setMajor(request.getParameter("major"));
+				subject.setSubjects(ParamMap.getValues(request, "subject"));
+				subjService.insert(subject);
 				member.setName(name2);
 				request.setAttribute("abc", member);
 			}

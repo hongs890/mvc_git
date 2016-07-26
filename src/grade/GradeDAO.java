@@ -43,6 +43,19 @@ public class GradeDAO {
 		public static GradeDAO getInstance() {
 			return instance;
 		}
+		
+	public void addMajorAndSubject(){
+		String sql ="insert into grade(seq,)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeQuery();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}	
+		
 	public int insert(GradeBean grade) {
 		int result = 0;
 		String sql = "insert into grade(seq, grade, java, sql, html, javascript, id, exam_date)"
@@ -65,7 +78,7 @@ public class GradeDAO {
 	}
 	public int update(GradeBean grade){
 		int revise = 0;
-		String sql = "update grade set "+grade.getType()+" = ? where seq = ?";
+		String sql = "update grade set "+grade.getSubject()+" = ? where seq = ?";
 		GradeService impl = GradeServiceImpl.getGradeImpl();
 		try {
 			pstmt = con.prepareStatement(sql);

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import account.AccountService;
 import account.AccountServiceImpl;
+import subject.SubjectDAO;
+import subject.SubjectMember;
 
 
 /**
@@ -15,10 +17,10 @@ import account.AccountServiceImpl;
  */
 public class MemberServiceImpl implements MemberService {
 	
-	MemberDAO dao = MemberDAO.getInstance();
-	AccountService accService = AccountServiceImpl.getInstence();
-	
-	MemberBean session;
+	private MemberDAO dao = MemberDAO.getInstance();
+	private SubjectDAO subjDao = SubjectDAO.getInstance();
+	private AccountService accService = AccountServiceImpl.getInstence();
+	private MemberBean session;
 	private static MemberServiceImpl instanceImpl = new MemberServiceImpl();
 	
 	private MemberServiceImpl() {
@@ -86,14 +88,14 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 	
-	public MemberBean login(MemberBean member) {
+	public SubjectMember login(MemberBean member) {
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
 				accService.map();
 			}else{
 				session.setId("fail");
 			}
-		return session;
+		return null;
 	}
 	public String myAccount() {
 		return session.toString();
