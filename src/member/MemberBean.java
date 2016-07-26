@@ -20,7 +20,7 @@ public class MemberBean implements Serializable{
 	
 	public MemberBean() {}
 	
-	public MemberBean(String id,String pw, String name, String ssn, String email, String profileImg, String phone) {
+	public MemberBean(String id,String name, String pw, String ssn, String email, String profileImg, String phone) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -36,7 +36,7 @@ public class MemberBean implements Serializable{
 		int ageResult2 = Integer.parseInt(nowArr[0]);
 		int ageResult0 = 0;
 		
-		switch (genderResult%2) {
+		switch (genderResult) {
 			case 1: case 5:
 				ageResult0 = ageResult2-(1899+(ageResult1/10000));
 				this.birth=ageResult0;

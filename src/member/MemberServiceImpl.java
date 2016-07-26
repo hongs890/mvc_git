@@ -68,8 +68,8 @@ public class MemberServiceImpl implements MemberService {
 		return dao.count();
 	}
 	@Override
-	public MemberBean findById(MemberBean mem) {
-		return dao.findById(mem.getId());
+	public MemberBean detail(String mem) {
+		return dao.findById(mem);
 	}
 	public List<?> list() {
 		return dao.list();
@@ -86,17 +86,14 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 	
-	public String login(MemberBean member) {
-		String result = "";
+	public MemberBean login(MemberBean member) {
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
-				result = session.getName();
 				accService.map();
 			}else{
-				result = "";
+				session.setId("fail");
 			}
-		
-		return result;
+		return session;
 	}
 	public String myAccount() {
 		return session.toString();

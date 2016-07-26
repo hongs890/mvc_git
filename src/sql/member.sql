@@ -25,13 +25,13 @@ select * from member where gender = '남'; -- findByNotPK
 select count(*) as count from member; -- count
 
 -- UPDATE
-update member set pw = '2', email='hong2@test.com' where id ='hong';
+update member set pw = '2', email='hong	2@test.com' where id ='hong';
 update member set email = id || '@test.com';
 update member set pw = '1' where id = 'hong';
 where id = 'you';
 update member set profile_img = id || '.jpg' where profile_img is NULL;
 update member set name = '최경환' where name='홍길동3';
-update member set phone ='010-7143-0222';
+update member set profile_img ='default.jpg';
 alter table member modify phone varchar2(15);
 alter table member add profile_img varchar2(100);
 -- DELETE

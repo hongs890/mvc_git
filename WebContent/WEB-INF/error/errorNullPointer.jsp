@@ -6,6 +6,6 @@
 	<title>nullPointer</title>
 </head>
 <body>	
-<img src="${img}/nullpointer.png" alt="" />
+<img src="${img}/null.jpg" alt="" />
 </body>
 </html>	

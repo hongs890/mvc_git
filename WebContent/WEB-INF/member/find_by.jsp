@@ -3,8 +3,17 @@
 <jsp:include page= "../global/header.jsp" />
 <jsp:include page= "../global/nav.jsp" />
 	<div style="text-align: center">
-	<form action="${context }/member/result/find_by.jsp" method="post">
-		<span class="meta">검색할 ID를 입력해주세요</span><input type="text" name="id"> <br/><br/>
+	<form action="${context }/member.do" method="get">
+		<input type="text" name="keyword" placeholder="검색할  ID">
+		<input type="hidden" name="action" value="find_by_id">
+		<input type="hidden" name="page" value="find_by_id">
+		<input type="submit" value="검색">
+		<input type="reset" value="취소">
+	</form><br/><br/>
+	<form action="${context }/member.do" method="get">
+		<input type="text" name="keyword" placeholder="검색할  이름">
+		<input type="hidden" name="action" value="find_by_name">
+		<input type="hidden" name="page" value="find_by_name">
 		<input type="submit" value="검색">
 		<input type="reset" value="취소">
 	</form>

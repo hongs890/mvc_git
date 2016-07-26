@@ -43,8 +43,8 @@ public class MemberDAO {
 
 	public int insert(MemberBean mem) {
 		int result = 0;	
-		String sql = "insert into member(id,pw,name,reg_date,ssn,email,phone) "
-				+ "values(?,?,?,?,?,?,?)";
+		String sql = "insert into member(id,pw,name,reg_date,ssn,email,profile_img,phone) "
+				+ "values(?,?,?,?,?,?,?,?)";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem.getId());
@@ -53,10 +53,10 @@ public class MemberDAO {
 			pstmt.setString(4, mem.getRegDate());
 			pstmt.setString(5, mem.getSsn());
 			pstmt.setString(6, mem.getEmail());
-			pstmt.setString(7, mem.getPhone());
+			pstmt.setString(7, "default.jpg");
+			pstmt.setString(8, mem.getPhone());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}
 		return result;
@@ -115,7 +115,7 @@ public class MemberDAO {
 			pstmt.setString(1, pk);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				temp = new MemberBean(rs.getString("ID"), rs.getString("PW"), rs.getString("NAME"),
+				temp = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
 						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"), rs.getString("phone"));
 				temp.setRegDate(rs.getString("REG_DATE"));
 			}

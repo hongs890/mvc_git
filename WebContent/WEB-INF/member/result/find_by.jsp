@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "member.MemberService" %>
 <%@ page import = "member.MemberServiceImpl" %>
 <%@page import="member.MemberBean"%>
@@ -66,3 +66,4 @@
 	</div>
 <jsp:include page= "../../global/footer.jsp" />
 <jsp:include page= "../../global/end.jsp" />
+ --%>

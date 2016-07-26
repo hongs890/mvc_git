@@ -7,9 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import global.DispatcherServlet;
 import global.Separator;
+import sun.print.resources.serviceui_pt_BR;
 
 @WebServlet("/member.do")	
 public class MemberController extends HttpServlet {
@@ -17,22 +19,21 @@ public class MemberController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("=== member controller ===");
+		HttpSession session = request.getSession();
 		Separator.init(request,response);
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		MemberBean member = new MemberBean();
-		request.setAttribute("member", service.getSession());
 		switch (Separator.command.getAction()) {
 		case "login" : 
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			String name = service.login(member);
-			if (name.equals("")) {
+			member = service.login(member);
+			if (member.getId().equals("fail")) {
 				Separator.command.setPage("login");
 				Separator.command.setView();
 			} else {
+				session.setAttribute("user", member);
 				Separator.command.setDirectory(request.getParameter("directory"));
-				member.setName(name);
-				request.setAttribute("abc", member);
 			}
 			break;
 		case "regist" : 
@@ -53,11 +54,10 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("abc", member);
 			}
 			break;
-		case "find_by_id":
-			request.setAttribute("ssn", service.getSession().getSsn().substring(0, 6));
-			Separator.command.setView();
+		case "detail":
 			break;
 		case "update":
+			member = (MemberBean) session.getAttribute("user");
 			member.setPw(request.getParameter("pw"));
 			member.setEmail(request.getParameter("email"));
 			service.update(member);
@@ -80,6 +80,15 @@ public class MemberController extends HttpServlet {
 			service.logoutSession(member);
 			Separator.command.setDirectory(request.getParameter("directory"));
 			Separator.command.setView();
+			break;
+		case "find_by_id":
+			request.setAttribute("member", service.detail(request.getParameter("keyword")));
+			break;
+		case "find_by_name":
+			request.setAttribute("list", service.findByName(request.getParameter("keyword")));
+			break;
+		case "list":
+			request.setAttribute("list", service.list());
 			break;
 		case "count":
 			request.setAttribute("member", service.count());
