@@ -13,6 +13,7 @@ import global.DispatcherServlet;
 import global.ParamMap;
 import global.Separator;
 import subject.SubjectBean;
+import subject.SubjectMember;
 import subject.SubjectService;
 import subject.SubjectServiceImpl;
 
@@ -26,19 +27,20 @@ public class MemberController extends HttpServlet {
 		Separator.init(request,response);
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		SubjectService subjService = SubjectServiceImpl.getInstance();
+		SubjectMember sm = new SubjectMember();
 		MemberBean member = new MemberBean();
 		SubjectBean subject = new SubjectBean();
 		switch (Separator.command.getAction()) {
 		case "login" : 
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			service.login(member);
-			if (member.getId().equals("fail")) {
+			sm = service.login(member);
+			if (sm.getId().equals("fail")) {
 				Separator.command.setPage("login");
 				Separator.command.setView();
 			} else {
-				request.setAttribute("user", member);
-				session.setAttribute("user", member);
+				request.setAttribute("user", sm);
+				session.setAttribute("user", sm);
 				Separator.command.setDirectory(request.getParameter("directory"));
 			}
 			break;
@@ -85,6 +87,7 @@ public class MemberController extends HttpServlet {
 				Separator.command.setPage("delete");
 				Separator.command.setView();
 			}
+			
 			break;
 		case "logout":
 			member.setId(service.getSession().getId());

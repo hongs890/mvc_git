@@ -5,6 +5,7 @@ import java.util.Map;
 
 import account.AccountService;
 import account.AccountServiceImpl;
+import subject.SubjectBean;
 import subject.SubjectDAO;
 import subject.SubjectMember;
 
@@ -89,13 +90,27 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public SubjectMember login(MemberBean member) {
+		SubjectMember sm = new SubjectMember();
+		SubjectBean sb = new SubjectBean();
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
 				accService.map();
+				sb = subjDao.findById(member.getId());
+				sm.setEmail(session.getEmail());
+				sm.setId(session.getId());
+				sm.setImg(session.getProfileImg());
+				sm.setMajor(sb.getMajor());
+				sm.setName(session.getName());
+				sm.setPhone(session.getPhone());
+				sm.setPw(session.getPw());
+				sm.setReg(session.getRegDate());
+				sm.setSsn(session.getSsn());
+				sm.setSubjects(sb.getSubjects());
+				sm.setGender(session.getGender());
 			}else{
-				session.setId("fail");
+				sm.setId("fail");
 			}
-		return null;
+		return sm;
 	}
 	public String myAccount() {
 		return session.toString();

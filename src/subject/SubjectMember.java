@@ -11,7 +11,16 @@ import java.io.Serializable;
 
 public class SubjectMember implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String id,pw,name,reg,ssn,email,img,phone,major,subjects;
+	private String id,pw,name,reg,ssn,email,img,phone,major,subjects,gender;
+
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	public String getId() {
 		return id;

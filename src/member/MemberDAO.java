@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import global.Constants;
-import global.DatabaseFactory;
-import global.Vendor;
+import subject.SubjectMember;
 
 /**
  *  * @date  : 2016. 7. 1.  * @author: 배근홍  * @file  : MemberDAO.java  * @story 
@@ -185,7 +184,7 @@ public class MemberDAO {
 			if(rs.next()){
 				result = rs.getInt("count");
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if(result == 1){
