@@ -5,25 +5,18 @@
 <meta charset="UTF-8" />
 <title>한빛 아카데미</title>
 <link rel="stylesheet" href="${css}/global.css"/>	
-
 </head>
 <body>
 <jsp:include page="header.jsp" />
+<script src="${js}/global.js"></script>
 <jsp:include page="nav.jsp" />
-	<div id="section" style="margin:0 auto">
-		<button onclick="showAlert('You Click me !!')">
-			CLICK ME
+	<div id="section">
+		<button id ="bt" style="margin:0 auto">
+			모던 자바스크립트 GO 
 		</button>
 	</div>
 <jsp:include page="footer.jsp" />
 <jsp:include page="end.jsp" />
 <script>	
-	function showAlert(){
-		alert('you click third !!');
-	}
-	function clickme(){
-		document.getElementsByTagName('button')[0]
-		.onclick=showAlert();
-	}
-	window.onload=clickme();
+window.onload=init("${context}");
 </script>

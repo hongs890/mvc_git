@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Document</title>
-	<script src="${context}/resources/js/global.js"></script>
+	<script src="${context}/resources/js/index.js"></script>
 </head>
 <body>
 	<a href="#" id="atag">홈으로</a>
