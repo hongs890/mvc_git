@@ -1,9 +1,14 @@
-function init(context){
-	var bt=document.getElementById('bt');
-/*	bt.addEventListener('click',clickme, false);
-*/	bt.onclick=move(context);
-}
-function move(context){
-	alert('Douglas 가기 직전..');
-	location.href=context+"/douglas.do";
-}
+var global = {
+	context : '',
+	setContext : function(param){
+		this.context = param;
+	},
+	init : function(param){
+		var bt=document.querySelector('#bt_js_go');
+		this.setContext(param);
+		bt.onclick=this.move();
+	},
+	move : function(){
+		location.href=this.context+"/douglas.do";
+	}
+};
