@@ -2,7 +2,6 @@
 <jsp:include page="../global/top.jsp" />
 <jsp:include page="../global/header.jsp" />
 <jsp:include page="../global/nav.jsp" />
-<script src="${js}/douglas.js"></script>
 <div id="container" style='width:100%'>
 <h1 style='margin:0 auto; width: 250px'>Creator note</h1>
 <section class="formbox">
@@ -29,6 +28,5 @@
 </div>
 <jsp:include page="../global/footer.jsp" />
 <jsp:include page="../global/end.jsp" />
-<script>
-	window.onload=creator_init();
-</script>
+<script src="${js}/douglas.js"></script>
+<script>account.init();</script>

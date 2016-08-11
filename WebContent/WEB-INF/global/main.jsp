@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>한빛 아카데미</title>
-<link rel="stylesheet" href="${css}/global.css"/>	
-</head>
-<body>
+<jsp:include page="top.jsp" />
 <jsp:include page="header.jsp" />
-<script src="${js}/global.js"></script>
 <jsp:include page="nav.jsp" />
 	<div id="section">
 		<button id ="bt_js_go" style="margin:0 auto">
@@ -17,6 +9,7 @@
 	</div>
 <jsp:include page="footer.jsp" />
 <jsp:include page="end.jsp" />
-<script>	
-window.onload=global.init("${context}");
+<script src="${js}/application.js"></script>
+<script type="text/javascript">	
+	application.to_douglas();
 </script>

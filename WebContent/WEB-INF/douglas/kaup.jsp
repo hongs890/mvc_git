@@ -2,7 +2,7 @@
 <jsp:include page="../global/top.jsp" />
 <jsp:include page="../global/header.jsp" />
 <jsp:include page="../global/nav.jsp" />
-<script src="${js}/douglas.js"></script>
+
 <div id="container">
 <section id="formbox">
 	<form name="form" >
@@ -19,6 +19,5 @@
 </div>
 <jsp:include page="../global/footer.jsp" />
 <jsp:include page="../global/end.jsp" />
-<script>
-	window.onload=kaup_init();
-</script>
+<script src="${js}/douglas.js"></script>
+<script>kaup.init();</script>

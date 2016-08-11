@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-  <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
-	<script src="${context}/resources/js/index.js"></script>
-</head>
-<body>
+<jsp:include page="WEB-INF/global/top.jsp" />
 	<a href="#" id="atag">홈으로</a>
 </body>
+<script src="${js}/application.js"></script>
 <script type="text/javascript">
-	window.onload=start("${context}");
+	application.init("${context}");
+	application.go_home();
 </script>
 </html>
