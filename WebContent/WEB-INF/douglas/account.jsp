@@ -2,6 +2,7 @@
 <jsp:include page="../global/top.jsp" />
 <jsp:include page="../global/header.jsp" />
 <jsp:include page="../global/nav.jsp" />
+
 <div id="container" style='width:100%'>
 <h1 style='margin:0 auto; width: 250px'>Creator note</h1>
 <section class="formbox">
@@ -19,8 +20,8 @@
 </section>
 <section class="formbox">
 	<p>Member Info</p>
-	Name : <article id="result_name"></article>
-	Age : <article id="result_age"></article>
+	NAME : <article id="result_name" ></article>
+	Age : <article id="result_age" ></article>
 	Gender : <article id="result_gender"></article>
 	AccountNum : <article id="result_account"></article>
 	balance : <article id="rest_money"></article>

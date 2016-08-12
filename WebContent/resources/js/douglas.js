@@ -1,3 +1,24 @@
+var util = (function(){
+	var _page, _directory;
+	var setPage = function(page){this._page = page;};
+	var setDirectory = function(directory){this._directory = directory;};
+	var getPage = function(){return this._page};
+	var getDirectory = function(){return this._directory};
+	return{
+		setPage : setPage,
+		setDirectory : setDirectory,
+		getPage : getPage,
+		getDirectory : getDirectory,
+		move : function(directory,page){
+			setDirectory(directory);
+			setPage(page);
+			location.href=sessionStorage.getItem('context');+'/'+getDirectory()+'.do?page='+getPage();
+		},
+		isNumber : function(value){
+			return typeof value === 'number' && isFinite(value);
+		}
+	};
+})();
 var move = function(context,page){
 		location.href=context+'/douglas.do?page='+page;
 	}
@@ -37,15 +58,22 @@ var account = (function(){
 			setMoney(0);
 		},
 		deposit : function(){
-			var money = Number(document.querySelector('#money').value);
-			console.log("인풋머니체크 : "+(typeof money === 'number'));
-			setMoney(getMoney() + money);
-			document.querySelector('#rest_money').innerHTML = getMoney();
+			if(!util.isNumber(getAccountNo())){
+				alert('먼저 통장 개설이 되어야 입금이 가능합니다.');
+			}else{
+				var money = Number(document.querySelector('#money').value);
+				setMoney(getMoney() + money);
+				document.querySelector('#rest_money').innerHTML = getMoney();
+			}
 		},
 		withdraw : function(){
-			var money = Number(document.querySelector('#money').value);
-			setMoney(getMoney() - money);
-			document.querySelector('#rest_money').innerHTML = getMoney();
+			if(!util.isNumber(getAccountNo())){
+				alert('먼저 통장 개설이 되어야 출금이 가능합니다.');
+			}else{
+				var money = Number(document.querySelector('#money').value);
+				setMoney(getMoney() - money);
+				document.querySelector('#rest_money').innerHTML = getMoney();
+			}
 		}
 	};
 })();
@@ -148,4 +176,6 @@ var kaup = (function(){
 		}
 	};
 })();
+
+
 
