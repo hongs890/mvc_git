@@ -4,7 +4,9 @@
 </body>
 <script src="${js}/application.js"></script>
 <script type="text/javascript">
-	application.init("${context}");
-	application.go_home();
+	$(function(){
+		application.init("${context}");
+		application.go_home();
+	});
 </script>
 </html>

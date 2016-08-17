@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-div.box{border: 5px solid powderblue; margin: 0 auto; width: 600px; text-align: center;}
+.box{margin: 0 auto; width: 600px; text-align: center;}
 #header {
     background-color:black;
     color:white;

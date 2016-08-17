@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-  <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
-</head>
-<body>
-	
-</body>
-</html>
+<jsp:include page="../global/top.jsp" />
+<jsp:include page="../global/header.jsp" />
+<jsp:include page="../global/nav.jsp" />
+리스트
+<jsp:include page="../global/footer.jsp" />
+<jsp:include page="../global/end.jsp" />
